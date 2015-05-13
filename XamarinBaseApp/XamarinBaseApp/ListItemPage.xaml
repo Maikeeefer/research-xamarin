@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="XamarinBaseApp.ListItemPage"
+	xmlns:local="clr-namespace:XamarinBaseApp;assembly=XamarinBaseApp"
+             xmlns:constants="clr-namespace:XamarinBaseApp;assembly=XamarinBaseApp"
+             x:Name="root"
+	Title="List with items">
+
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness">
+			<OnPlatform.iOS>
+				0, 20, 0, 0
+			</OnPlatform.iOS>
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Content> 
+
+
+	<ListView x:Name="custListView"
+            IsVisible="false"
+            ItemsSource="{x:Static local:ListItemPage.List}"
+            ItemSelected="ItemListOnItemSelected">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <ViewCell.View>
+            <StackLayout Orientation="Vertical"
+            			HorizontalOptions="StartAndExpand">
+
+                <Label Text="{Binding Name}"
+                       HorizontalOptions="FillAndExpand" />
+
+                <Label Text="{Binding FavoriteName}"
+                       HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView> 
+</ContentPage.Content> 
+</ContentPage>
